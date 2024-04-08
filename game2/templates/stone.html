@@ -1,0 +1,367 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    header{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 2vmin;
+    margin: 0px;
+    background-color: #222831;
+    padding-bottom: 2vmin;
+    color: #76ABAE;
+}
+
+.showscore{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.score_fixing{
+    padding: 4vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+body{
+    background-color: #EEEEEE;
+}
+.rounded{
+    border-radius: 50px;
+    
+}
+
+img{
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50px;
+    transition: smooth;
+    animation-delay: 1s;
+    margin-top: 5vmin;
+    opacity: 0.85;
+    filter: blur(0.03em);
+}
+
+/* .stones{
+    pointer-events:;
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: smooth;
+    gap: 1.5em;
+    opacity: 1;
+    filter: blur(0em);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(248, 3, 3, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.432);
+}
+.siscorrs{
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: smooth;
+    gap: 1.5em;
+    opacity: 1;
+    filter: blur(0em);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(248, 3, 3, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.432);
+}
+.papers{
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: smooth;
+    gap: 1.5em;
+    opacity: 1;
+    filter: blur(0em);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(248, 3, 3, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.432);
+} */
+img:hover{
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: smooth;
+    gap: 1.5em;
+    opacity: 1;
+    filter: blur(0em);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+img:active{
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: smooth;
+    gap: 1.5em;
+    opacity: 0.85;
+    filter: blur(0em);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img_container{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.score{
+    align-items: center;
+    text-align: center;
+    padding-top: 5vmin;
+    margin: 0px;
+    font-size: 1.5rem;
+    padding-bottom: 0px;
+}
+
+.result{
+    align-items: center;
+    text-align: center;
+    padding-top: 2vmin;
+    margin: 0px;
+    padding-bottom: 2vmin;
+    justify-content: center;
+    display: flex;
+}
+
+.resultbox{
+    
+    align-items: center;
+    display: flex;
+    display: inline; /*to make the div adjust its width accordingly to its text*/
+    font-size: 1.5rem;
+    background-color: #222831;
+    text-align: center;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0.25rem;
+    color: #76ABAE;
+}
+
+.draw{
+    align-items: center;
+    display: flex;
+    display: inline; /*to make the div adjust its width accordingly to its text*/
+    font-size: 1.5rem;
+    background-color: #F9E897;
+    text-align: center;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0.25rem;
+    color: #b44773;
+}
+.winner{
+    align-items: center;
+    display: flex;
+    display: inline; /*to make the div adjust its width accordingly to its text*/
+    font-size: 1.5rem;
+    background-color: #89f37d;
+    text-align: center;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0.25rem;
+    color: #b44773;
+}
+.looser{
+    align-items: center;
+    display: flex;
+    display: inline; /*to make the div adjust its width accordingly to its text*/
+    font-size: 1.5rem;
+    background-color: #f00a0a;
+    text-align: center;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0.25rem;
+    color: #ffffff;
+}
+
+#uscore,#cscore{
+    font-size: 2rem;
+}
+   </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <h1>Stone Paper Sisccor</h1>
+    </header>
+    <section>
+        <div class="score_fixing">
+            <input type="number" min="0" id="button"/>
+            <button onclick="clearscreen()">Fix Score!</button>
+            
+        </div>
+        <div class="showscore">
+        <h2 id="score"></h2>
+        </div>
+        <div class="img_container">
+        <div id="stone" class="rounded" >
+            <img src="{% static 'images/stone.jpg' %}" id="stone" class="stone">
+        </div>
+        <div id="paper" class="rounded">
+            <img src="{% static 'images/paper.jpg' %}" id="paper" class="papers">
+        </div>
+        <div id="siscorr" class="rounded">
+            <img src="{% static 'images/scissor.jpeg' %}" id="siscorr" class="siscorrs">
+        </div>
+        </div>
+        <div class="score">
+           
+            <div class="scoreboard" id="user">
+                <p id="uscore">you - 0</p>
+            </div>
+            <div class="scoreboard" id="comp">
+                <p id="cscore"> comp - 0</p>
+            </div>
+        </div>
+        <div  class="result">
+            <div class="resultbox">
+                 <p class="resultmsg">play your move</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let choices = document.querySelectorAll(".rounded");
+        let result = document.querySelector(".resultbox");
+        let stones = document.querySelector(".stone"); // Fixed class name
+        let papers = document.querySelector(".papers");
+        let scissors = document.querySelector(".siscorrs"); // Fixed class name
+        let resultmsg = document.querySelector(".resultmsg");
+        let uscore = document.querySelector("#uscore");
+        let cscore = document.querySelector("#cscore");
+        let scorefix = document.querySelector(".score_fixing");
+        let sscore = document.querySelector("#score"); //showscore
+    
+        let gameOver = false;
+        let userwin = true;
+        let userscore = 0;
+        let compscore = 0;
+        let wscore = 0;
+        let startGame = false;
+    
+        let clearscreen = () => {
+            startGame = true;
+            wscore = document.getElementById("button").value;
+            scorefix.style.visibility = "hidden";
+            sscore.innerText = `${wscore} is the winning score.`;
+            return wscore;
+        };
+    
+        const compchoice = () => {
+            let options = ["stone", "paper", "siscorr"]; // Fixed typo here
+            let randomindx = Math.floor(Math.random() * 3);
+            let cchoice = options[randomindx];
+            if (cchoice == "stone") {
+                stones.style.boxShadow = "0 4px 8px 0 rgba(248, 3, 3, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.432)";
+                papers.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+                scissors.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+            } else if (cchoice == "paper") {
+                papers.style.boxShadow = "0 4px 8px 0 rgba(248, 3, 3, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.432)";
+                stones.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+                scissors.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+            } else if (cchoice == "siscorr") {
+                scissors.style.boxShadow = "0 4px 8px 0 rgba(248, 3, 3, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.432)";
+                stones.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+                papers.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+            }
+            return cchoice;
+        };
+    
+        const showwinner = (userwin, uoption, coption, wscore) => {
+            if (userwin) {
+                userscore++;
+                uscore.innerText = `you - ${userscore}`;
+                result.classList.remove("draw", "looser");
+                resultmsg.innerText = `You win, your ${uoption} beats ${coption}`;
+                result.classList.add("winner");
+            } else {
+                compscore++;
+                cscore.innerText = `comp - ${compscore}`;
+                result.classList.remove("draw", "winner");
+                resultmsg.innerText = `You lose, ${coption} beats your ${uoption}`;
+                result.classList.add("looser");
+            }
+            if (userscore == wscore || compscore == wscore) {
+                gameover();
+            }
+        };
+    
+        let playgame = (uoption) => {
+            console.log(uoption, " is the user option");
+    
+            // generate computer choice
+            let coption = compchoice();
+            console.log(coption, " is the comp option");
+            if (uoption == coption) {
+                result.classList.remove("winner", "looser");
+                console.log("It's a draw");
+                resultmsg.innerText = "It was a Draw";
+                result.classList.add("draw");
+            } else if (uoption == "stone") {
+                userwin = coption == "paper" ? false : true;
+                showwinner(userwin, uoption, coption, wscore);
+            } else if (uoption == "paper") {
+                userwin = coption == "scissors" ? false : true;
+                showwinner(userwin, uoption, coption, wscore);
+            } else if (uoption == "siscorr") {
+                userwin = coption == "stone" ? false : true;
+                showwinner(userwin, uoption, coption, wscore);
+            }
+        };
+    
+        const gameover = () => {
+            gameOver = true;
+            if (userscore > compscore) {
+                sscore.innerText = `You are the winner`;
+    
+            } else {
+                sscore.innerText = `Computer is the winner`;
+            }
+        };
+    
+    
+        let handleClick = (event) => {
+            if (!gameOver) {
+                if (startGame) {
+                    let uoption = event.target.getAttribute("id");
+                    playgame(uoption);
+                }
+            }
+        };
+    
+        choices.forEach(choice => {
+            choice.addEventListener("click", handleClick);
+        });
+    
+        const removeEventListeners = () => {
+            choices.forEach(choice => {
+                choice.removeEventListener("click", handleClick);
+            });
+        };
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* Reset some default styles */
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    margin-left: 175vmin;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 40px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.game {
+    background-color: #4322bdd5;
+    
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.game2 {
+    background-color: #fff;
+    background-color: rgb(211, 112, 112);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.game3 {
+    background-color: #d8b92c;
+    
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.game h2 {
+    color: whitesmoke;
+    
+}
+.game3 h2 {
+    color: rgb(221, 32, 120);
+}
+
+.game-info {
+    margin-bottom: 20px;
+}
+p{
+    color: rgb(61, 243, 213);
+}
+
+.play-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: rgb(93, 133, 66);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.play-button:hover {
+    background-color: #444;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: cente
+}  
+
+</style>
+<body>
+    <header>
+        <h1>GamefonzA</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="game">
+            <h2>Tic Tac Toe</h2>
+            <div class="game-info">
+                <h3></h3>
+                <p>a simple 2 player game of TicTacToe.</p>
+                <a href="{% url 'tiktak' %}" class="play-button">Play Now</a>
+            </div>
+        </section>
+        <section class="game2">
+            <h2>stone paper</h2>
+            <div class="game-info">
+                
+                <p>Description of the game goes here.</p>
+                <a href="{% url 'stone' %}" class="play-button">Play Now</a>
+            </div>
+            
+        </section>
+        <section class="game3">
+            <h2>snake</h2>
+            <div class="game-info">
+            
+                <p>old snake game.</p>
+                <a href="{% url 'animal' %}" class="play-button">Play Now</a>
+            </div>
+            
+        </section>
+    
+    </main>
+
+    
+</body>
+</html>
